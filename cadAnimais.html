@@ -2,34 +2,49 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/foundation.css">
     <title>Cadastro de um novo animal</title>
 </head>
 <body>
 
-  <form>
-    <label>Idade:</label>
-    <input type="number" name="idadeanimal" min="0" max="200"><br>
-    <label>Porte:</label><br>
-    <input type="radio" name="porte" value="pequeno" checked> Pequeno<br>
-    <input type="radio" name="porte" value="medio"> Médio<br>
-    <input type="radio" name="porte" value="grande"> Grande<br>
-    <label>Proprietário</label>
-    <input type="text" value="usuario"><br>
-    <label>Tipo de animal</label><!--Buscar no banco-->
-    <select name="tipoanimal">
-      <option value="gato">Gato</option>
-    </select>
-    <label>Raça</label> <!--Buscar no banco as raças de acordo com o tipo de animal-->
-    <select name="raca">
-      <option value="siames">Siamês</option>
-    </select><br>
-    <label>Nome do animal</label>
-    <input type="text" name="nomeanimal"><br>
-    <!--No momento de inserir no banco, o campo "usuario" deve ser pego da sessão-->
-    <label>Descrição</label>
-    <input type="text" name="descricao"><br>
-  </form>
+  <div class="row">
+  	<div class="small-12 medium-12 large-12 columns">
+  		<form>
+		    <div class="row">
+		    	<div class="small-12 medium-6 large-6 columns">
+		    		<label>Idade:</label>
+		   			 <input type="number" name="idadeanimal" min="0" max="200">
+		    	</div>
+		    	<div class="small-12 medium-6 large-6 columns">
+		    		<label>Porte:</label><br>
+				    <input type="radio" name="porte" value="pequeno" checked> Pequeno<br>
+				    <input type="radio" name="porte" value="medio"> Médio<br>
+				    <input type="radio" name="porte" value="grande"> Grande<br>
+		    	</div>
+		    </div>
+		    
+		    <label>Proprietário</label>
+		    <input type="text" value="usuario"><br>
+		    <label>Tipo de animal</label><!--Buscar no banco-->
+		    <select name="tipoanimal">
+		      <option value="gato">Gato</option>
+		    </select>
+		    <label>Raça</label> <!--Buscar no banco as raças de acordo com o tipo de animal-->
+		    <select name="raca">
+		      <option value="siames">Siamês</option>
+		    </select><br>
+		    <label>Nome do animal</label>
+		    <input type="text" name="nomeanimal"><br>
+		    <!--No momento de inserir no banco, o campo "usuario" deve ser pego da sessão-->
+		    <label>Descrição</label>
+		    <input type="text" name="descricao"><br>
+		 </form>
+  	</div>
+  </div>
 
+  
+<script src="js/vendor/jquery.js"></script>
+	<script src="js/vendor/foundation.js"></script>
 
 </body>
 </html>
