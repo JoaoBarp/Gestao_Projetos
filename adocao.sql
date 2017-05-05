@@ -1,6 +1,9 @@
 create database adocao;
 use adocao;
 
+-- Necessário criar um usuario com nome 'tom' e senha '1234'
+-- Dar todos os privilégios para o usuario 'tom'
+
 create table estados (
 	nome varchar(2) not null,
 	constraint pk_estados primary key (nome)
@@ -49,6 +52,3 @@ create table animais(
 	constraint fk_animais_racas foreign key (raca) references racas(nome),
 	constraint fk_animais_tipoAnimal foreign key (tipoanimal) references tipoAnimal(nome)
 );
-
-
-
