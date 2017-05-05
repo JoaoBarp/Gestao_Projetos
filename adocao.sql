@@ -17,6 +17,8 @@ create table usuario(
 	cep varchar(8) not null,
 	telefone varchar(11) not null,
 	ong boolean not null,
+	email VARCHAR(40) not null,
+	senha VARCHAR(20) not null,
 	constraint pk_usuario primary key (nome),
 	constraint fk_usuario_estado foreign key (estado) references estados(nome)
 );
@@ -47,3 +49,6 @@ create table animais(
 	constraint fk_animais_racas foreign key (raca) references racas(nome),
 	constraint fk_animais_tipoAnimal foreign key (tipoanimal) references tipoAnimal(nome)
 );
+
+
+
