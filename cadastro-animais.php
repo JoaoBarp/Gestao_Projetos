@@ -1,11 +1,28 @@
 <?php
+$link = mysqli_connect('localhost', 'root', '', 'adocao') or die('Não foi possível conectar');
 
+if(isset($_POST['subAnimal'])){
+    $idade = $_POST['idadeanimal'];
+    $porte = $_POST['porte'];
+    $tipo  = $_POST['tipoanimal'];
+    $raca  = $_POST['raca'];
+    $nome  = $_POST['nomeanimal'];
+    $desc  = $_POST['descricao'];
+
+echo $idade ;
+echo $porte ;
+echo $tipo ;
+echo $raca ;
+echo $nome ;
+echo $desc ;
+
+$sql = "insert into animais (idade, porte, descricao, nomeanimal, tipoanimal, nomeusuario, raca) values ('$idade', '$porte',  '$desc', '$nome', '$tipo', 'japa', 'Siamês');";
+
+$res = mysqli_query($link, $sql) or die(mysqli_error($sql));
+mysqli_close($link);
+}
 
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +41,7 @@
 
   <div class="row">
   	<div class="small-12 medium-12 large-12 columns">
-  		<form>
+  		<form action="cadastro-animais.php" method="post">
 		    <div class="row">
           <div class="small-12 medium-4 large-4 columns">
     		    <label>Nome do animal
@@ -44,7 +61,15 @@
           <div class="small-12 medium-4 large-4 columns">
 		         <label>Tipo de animal<!--Buscar no banco-->
 		          <select name="tipoanimal">
-		              <option value="gato">Gato</option>
+                <?php
+            	    $sql = "SELECT nome FROM tipoAnimal order by nome;";
+                    $res = mysqli_query($link, $sql);
+                    while ($resu = mysqli_fetch_assoc($res)){
+                        echo '<option value="'.$resu['nome'].'">'.$resu['nome'].'</option>';
+
+                    }
+            	   ?>
+		              <!-- <option value="gato">Gato</option> -->
 		          </select>
             </label>
           </div>
@@ -73,7 +98,7 @@
 
       <div class="row">
         <div class="small-12 medium-3 large-3 large-centered text-center column">
-          <input type="submit" class="expanded button primary" value="Enviar">
+          <input type="submit" name="subAnimal" class="expanded button primary" value="Enviar">
         </div>
       </div>
 

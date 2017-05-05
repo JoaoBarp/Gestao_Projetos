@@ -1,3 +1,4 @@
+drop database if exists adocao;
 create database adocao;
 use adocao;
 
@@ -52,3 +53,9 @@ create table animais(
 	constraint fk_animais_racas foreign key (raca) references racas(nome),
 	constraint fk_animais_tipoAnimal foreign key (tipoanimal) references tipoAnimal(nome)
 );
+
+insert into estados values ('SC'), ('SP'), ('BA'), ('RS'), ('PR');
+insert into usuario values ('japa', 'blablbala', 3, 'apto 12', 'centro', 'Chapecó', 'SC', '5522456', '(49)555555', FALSE, 'balbalaba@haushyausha', 'oi123');
+insert into tipoAnimal values ('gato'), ('cachorro'), ('tartaruga');
+insert into racas values ('Pit bull', 'cachorro'), ('Siamês', 'gato');
+insert into animais (idade, porte, descricao, nomeanimal, tipoanimal, nomeusuario, raca) values (5, 'pequeno', 'ooooo', 'Murphy', 'gato', 'japa', 'Siamês');
