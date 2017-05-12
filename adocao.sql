@@ -6,8 +6,9 @@ use adocao;
 -- Dar todos os privilégios para o usuario 'tom'
 
 create table estados (
+	id integer not null AUTO_INCREMENT,
 	nome varchar(2) not null,
-	constraint pk_estados primary key (nome)
+	constraint pk_estados primary key (id)
 );
 
 create table usuario(
@@ -23,8 +24,8 @@ create table usuario(
 	ong boolean not null,
 	email VARCHAR(40) not null,
 	senha VARCHAR(20) not null,
-	constraint pk_usuario primary key (nome),
-	constraint fk_usuario_estado foreign key (estado) references estados(nome)
+	constraint pk_usuario primary key (nome)
+	-- constraint fk_usuario_estado foreign key (estado) references estados(nome)
 );
 
 create table tipoAnimal(
@@ -33,9 +34,10 @@ create table tipoAnimal(
 );
 
 create table racas(
+	id integer not null AUTO_INCREMENT,
 	nome varchar (30) not null,
 	tipoanimal varchar(30) not null,
-	constraint pk_racas primary key (nome),
+	constraint pk_racas primary key (id),
 	constraint fk_racas_tipoAnimal foreign key (tipoanimal) references tipoAnimal(nome)
 );
 
@@ -50,12 +52,12 @@ create table animais(
 	raca varchar(30) null,
 	constraint pk_animais primary key (id),
 	constraint fk_animais_usuario foreign key (nomeusuario) references usuario(nome),
-	constraint fk_animais_racas foreign key (raca) references racas(nome),
+	-- constraint fk_animais_racas foreign key (raca) references racas(nome),
 	constraint fk_animais_tipoAnimal foreign key (tipoanimal) references tipoAnimal(nome)
 );
 
-insert into estados values ('SC'), ('SP'), ('BA'), ('RS'), ('PR');
+insert into estados (nome) values ('SC'), ('SP'), ('BA'), ('RS'), ('PR');
 insert into usuario values ('japa', 'blablbala', 3, 'apto 12', 'centro', 'Chapecó', 'SC', '5522456', '(49)555555', FALSE, 'balbalaba@haushyausha', 'oi123');
 insert into tipoAnimal values ('gato'), ('cachorro'), ('tartaruga');
-insert into racas values ('Pit bull', 'cachorro'), ('Siamês', 'gato');
+insert into racas (nome, tipoanimal) values ('Pit bull', 'cachorro'), ('Siamês', 'gato');
 insert into animais (idade, porte, descricao, nomeanimal, tipoanimal, nomeusuario, raca) values (5, 'pequeno', 'ooooo', 'Murphy', 'gato', 'japa', 'Siamês');

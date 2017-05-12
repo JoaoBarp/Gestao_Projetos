@@ -9,16 +9,20 @@ if(isset($_POST['subAnimal'])){
     $nome  = $_POST['nomeanimal'];
     $desc  = $_POST['descricao'];
 
-echo $idade ;
-echo $porte ;
-echo $tipo ;
-echo $raca ;
-echo $nome ;
-echo $desc ;
+// echo $idade . "<br>";
+// echo $porte . "<br>";
+// echo $tipo . "<br>";
+// echo $raca . "<br>";
+// echo $nome . "<br>";
+// echo $desc . "<br>";
 
-$sql = "insert into animais (idade, porte, descricao, nomeanimal, tipoanimal, nomeusuario, raca) values ('$idade', '$porte',  '$desc', '$nome', '$tipo', 'japa', 'Siamês');";
+// $sql = "insert into animais (idade, porte, descricao, nomeanimal, tipoanimal, nomeusuario, raca) values (1, 'medio', 'ooddddooo', 'Murphy', 'cachorro', 'japa', 'Pit bull');";
+$sql = "insert into animais (idade, porte, descricao, nomeanimal, tipoanimal, nomeusuario, raca) values ($idade, '$porte', '$desc', '$nome', '$tipo', 'japa', '$raca');";
 
-$res = mysqli_query($link, $sql) or die(mysqli_error($sql));
+$res = mysqli_query($link, $sql) or die(mysqli_error($link));
+
+// if(!mysqli_num_rows($res)) echo "Erro ao salvar Dados!";
+
 mysqli_close($link);
 }
 
@@ -76,7 +80,7 @@ mysqli_close($link);
           <div class="small-12 medium-4 large-4 columns">
             <label>Raça <!--Buscar no banco as raças de acordo com o tipo de animal-->
             <select name="raca">
-              <option value="siames">Siamês</option>
+              <option value="Siamês">Siamês</option>
             </select>
             </label>
           </div>
@@ -91,7 +95,7 @@ mysqli_close($link);
         <div class="row">
         <div class="small-12 medium-12 large-12 columns">
   		    <label>Descrição
-  		    <textarea placeholder="Descrições adicionais"></textarea>
+  		    <textarea name="descricao" placeholder="descricao"></textarea>
           </label>
         </div>
       </div>

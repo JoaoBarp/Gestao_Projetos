@@ -1,3 +1,33 @@
+<?php
+$link = mysqli_connect('localhost', 'root', '', 'adocao') or die('Não foi possível conectar');
+
+if(isset($_POST['subUsuario'])){
+    $nome = $_POST['nome'];
+    $endereco = $_POST['endereco'];
+    $numero  = $_POST['numero'];
+    $complemento  = $_POST['complemento'];
+    $bairro  = $_POST['bairro'];
+    $cep  = $_POST['cep'];
+    $cidade  = $_POST['cidade'];
+		$estado = $_POST['estado'];
+		$telefone = $_POST['telefone'];
+		$ong = $_POST['ong'];
+		$email = $_POST['email'];
+		$senha = $_POST['senha'];
+
+
+
+
+$sql = "insert into usuario (nome, rua, numero, complemento, bairro, cidade, estado, cep, telefone, ong, email, senha) values ('$nome', '$endereco', $numero, '$complemento', '$bairro', '$cep', '$cidade','$estado','$telefone','FALSE','$email','$senha');";
+
+$res = mysqli_query($link, $sql) or die(mysqli_error($link));
+
+// if(!mysqli_num_rows($res)) echo "Erro ao salvar Dados!";
+
+mysqli_close($link);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,7 +44,7 @@
 	</div>
 
 
-	<form action="insertUsuario.php" method="POST">
+	<form action="cadastro-usuario.php" method="POST">
 
 		<div class="row">
 			<div class="small-12 medium-12 large-12 columns">
@@ -28,7 +58,7 @@
 			</div>
 
 			<div class="small-12 medium-2 large-2 columns">
-				<input type="number" placeholder="Número" name="numero">
+				<input type="number" placeholder="Número" min="0" name="numero">
 			</div>
 
 			<div class="small-12 medium-4 large-4 columns">
@@ -53,8 +83,14 @@
 
 			<div class="small-12 medium-6 large-6 columns">
 				<select name="estado" id="estado">
-					<option value="#"  disabled selected = "selected">Estado</option>
-					<option value="SC">Santa Catarina</option>
+					<?php
+						$sql = "SELECT nome FROM estados order by nome;";
+							$res = mysqli_query($link, $sql);
+							while ($resu = mysqli_fetch_assoc($res)){
+									echo '<option value="'.$resu['nome'].'">'.$resu['nome'].'</option>';
+
+							}
+					 ?>
 				</select>
 			</div>
 		</div>
@@ -65,13 +101,17 @@
 			</div>
 
 			<div class="small-12 medium-6 large-6 columns">
-				<input type="text" placeholder="Nome da ONG" name="ong">
+				<fieldset class="small-12 medium-8 large-8 columns">
+					<legend>Escolha o porte/tamanho do animal</legend>
+				<input type="radio" name="ong" value="ONG" checked> <label for="ONG">ONG</label>
+				<input type="radio" name="ong" value="usuario"> <label for="Usuário">Usuário</label>
+				</fieldset>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="small-12 medium-6 large-6 columns">
-				<input type="text" placeholder="Email" name="email">
+				<input type="email" placeholder="Email" name="email">
 			</div>
 
 			<div class="small-12 medium-6 large-6 columns">
@@ -81,7 +121,7 @@
 
 		<div class="row">
 			<div class="small-12 columns">
-				<input type="submit" class="button success" value="Enviar Dados">
+				<input type="submit" name = "subUsuario" class="button success" value="Enviar Dados">
 			</div>
 		</div>
 

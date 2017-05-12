@@ -61,30 +61,25 @@ if( isset( $_POST['senha'] ) ) {
   $senha = $_POST['senha'];
 }
 
-$servername = "localhost";
-$username = "tom";
-$password = "1234";
-$dbname = "adocao";
-
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$link = mysqli_connect('localhost', 'root', '', 'adocao') or die('Não foi possível conectar');
 
 // Check connection
-if( $conn->connect_error ) {
-    die("Connection failed: " . $conn->connect_error);
+if( $link->connect_error ) {
+    die("Connection failed: " . $link->connect_error);
 }
 
 $sql = "INSERT INTO usuario( nome, rua, numero, complemento, bairro, cidade, estado, cep, telefone, ong, email, senha )
 VALUES ( '$nome', '$endereco', '$numero', '$complemento', '$bairro', '$cidade', '$estado', '$cep', '$telefone', '$ong', '$email', '$senha' )";
 
-if ($conn->query($sql) === TRUE) {
-    echo "Sucesso!!";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+$res = mysqli_query($link, $sql) or die(mysqli_error($link));
 
+// if ($link->query($sql) === TRUE) {
+//     echo "Sucesso!!";
+// } else {
+//     echo "Error: " . $sql . "<br>" . $conn->error;
+// }
 
-$conn->close();
-
+mysqli_close($link);
 
 ?>
