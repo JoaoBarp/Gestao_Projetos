@@ -18,7 +18,8 @@ if(isset($_POST['subUsuario'])){
 
 
 
-$sql = "insert into usuario (nome, rua, numero, complemento, bairro, cidade, estado, cep, telefone, ong, email, senha) values ('$nome', '$endereco', $numero, '$complemento', '$bairro', '$cep', '$cidade','$estado','$telefone','FALSE','$email','$senha');";
+$sql = "insert into usuario (nome, rua, numero, complemento, bairro, cidade, estado, cep, telefone, ong, email, senha)
+    values ('$nome', '$endereco', $numero, '$complemento', '$bairro', '$cidade', '$estado', '$cep','$telefone', '$ong','$email','$senha');";
 
 $res = mysqli_query($link, $sql) or die(mysqli_error($link));
 
@@ -102,9 +103,8 @@ mysqli_close($link);
 
 			<div class="small-12 medium-6 large-6 columns">
 				<fieldset class="small-12 medium-8 large-8 columns">
-					<legend>Escolha o porte/tamanho do animal</legend>
-				<input type="radio" name="ong" value="ONG" checked> <label for="ONG">ONG</label>
-				<input type="radio" name="ong" value="usuario"> <label for="Usuário">Usuário</label>
+				<input type="radio" name="ong" value="1" checked> <label for="ONG">ONG</label>
+				<input type="radio" name="ong" value="0"> <label for="Usuário">Usuário</label>
 				</fieldset>
 			</div>
 		</div>
@@ -115,7 +115,7 @@ mysqli_close($link);
 			</div>
 
 			<div class="small-12 medium-6 large-6 columns">
-				<input type="text" placeholder="Senha" name="senha">
+				<input type="password" placeholder="Senha" name="senha">
 			</div>
 		</div>
 

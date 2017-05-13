@@ -1,5 +1,6 @@
 drop database if exists adocao;
 create database adocao;
+ALTER DATABASE adocao CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 use adocao;
 
 -- Necessário criar um usuario com nome 'tom' e senha '1234'
@@ -29,16 +30,17 @@ create table usuario(
 );
 
 create table tipoAnimal(
+	id integer not null AUTO_INCREMENT,
 	nome varchar(30) not null,
-	constraint pk_tipoAnimal primary key (nome)
+	constraint pk_tipoAnimal primary key (id)
 );
 
 create table racas(
 	id integer not null AUTO_INCREMENT,
 	nome varchar (30) not null,
-	tipoanimal varchar(30) not null,
+	tipoanimal integer not null,
 	constraint pk_racas primary key (id),
-	constraint fk_racas_tipoAnimal foreign key (tipoanimal) references tipoAnimal(nome)
+	constraint fk_racas_tipoAnimal foreign key (tipoanimal) references tipoAnimal(id)
 );
 
 create table animais(
@@ -47,17 +49,17 @@ create table animais(
 	porte varchar(15) not null,
 	descricao text not null,
 	nomeanimal varchar(20) null,
-	tipoanimal varchar(30) not null,
+	tipoanimal integer not null,
 	nomeusuario varchar(30) not null,
 	raca varchar(30) null,
 	constraint pk_animais primary key (id),
 	constraint fk_animais_usuario foreign key (nomeusuario) references usuario(nome),
 	-- constraint fk_animais_racas foreign key (raca) references racas(nome),
-	constraint fk_animais_tipoAnimal foreign key (tipoanimal) references tipoAnimal(nome)
+	constraint fk_animais_tipoAnimal foreign key (tipoanimal) references tipoAnimal(id)
 );
 
 insert into estados (nome) values ('SC'), ('SP'), ('BA'), ('RS'), ('PR');
 insert into usuario values ('japa', 'blablbala', 3, 'apto 12', 'centro', 'Chapecó', 'SC', '5522456', '(49)555555', FALSE, 'balbalaba@haushyausha', 'oi123');
-insert into tipoAnimal values ('gato'), ('cachorro'), ('tartaruga');
-insert into racas (nome, tipoanimal) values ('Pit bull', 'cachorro'), ('Siamês', 'gato');
-insert into animais (idade, porte, descricao, nomeanimal, tipoanimal, nomeusuario, raca) values (5, 'pequeno', 'ooooo', 'Murphy', 'gato', 'japa', 'Siamês');
+insert into tipoAnimal (nome) values ('gato'), ('cachorro'), ('tartaruga');
+insert into racas (nome, tipoanimal) values ('pit bull', 2), ('siames', 1);
+insert into animais (idade, porte, descricao, nomeanimal, tipoanimal, nomeusuario, raca) values (5, 'pequeno', 'ooooo', 'Murphy', 1, 'japa', 2);

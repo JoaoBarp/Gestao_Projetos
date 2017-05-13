@@ -65,23 +65,19 @@ mysqli_close($link);
           <div class="small-12 medium-4 large-4 columns">
 		         <label>Tipo de animal<!--Buscar no banco-->
 		          <select name="tipoanimal">
-                <?php
-            	    $sql = "SELECT nome FROM tipoAnimal order by nome;";
-                    $res = mysqli_query($link, $sql);
-                    while ($resu = mysqli_fetch_assoc($res)){
-                        echo '<option value="'.$resu['nome'].'">'.$resu['nome'].'</option>';
-
-                    }
-            	   ?>
-		              <!-- <option value="gato">Gato</option> -->
+                      <option value="">Selecione</option>
+                      <?php
+                    	  $sql = "SELECT id, nome FROM tipoAnimal order by nome;";
+                          $res = mysqli_query($link, $sql);
+                          while ($resu = mysqli_fetch_assoc( $res ) )
+                              echo '<option value="'.$resu['id'].'">'.$resu['nome'].'</option>';
+        	          ?>
 		          </select>
             </label>
           </div>
           <div class="small-12 medium-4 large-4 columns">
             <label>Raça <!--Buscar no banco as raças de acordo com o tipo de animal-->
-            <select name="raca">
-              <option value="Siamês">Siamês</option>
-            </select>
+            <select name="raca"></select>
             </label>
           </div>
 
@@ -111,8 +107,36 @@ mysqli_close($link);
   </div>
 
 
-<script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/jquery.js"></script>
 	<script src="js/vendor/foundation.js"></script>
+
+    <script>
+        $( "select[name='tipoanimal']" ).on( 'change', function() {
+            var tipoAnimal = $( "select[name='tipoanimal']" ).val();
+
+            $.ajax({
+                url: 'racas.php',
+                data: { 'tipoAnimal': tipoAnimal },
+                type: 'POST',
+                success: function( result ) {
+                    console.log(result);
+                    result = JSON.parse( result );
+                    console.log( result );
+                    var raca = $( "select[name='raca']" );
+                    // limpa os valores se existir
+                    raca.html("");
+                    // roda todos os resultados retornados
+                    $.each( result, function( i, value ) {
+                        // pega a posição do json e inclui no select
+                        raca.html( "<option value="+ value.id +">"+ value.nome +"<option>" );
+                    })
+                },
+                error: function(ret,a) {
+                    console.log(ret, a);
+                }
+            });
+        })
+    </script>
 
 </body>
 </html>
