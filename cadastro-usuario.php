@@ -10,7 +10,7 @@ if(isset($_POST['subUsuario'])){
     $cep  = $_POST['cep'];
     $cidade  = $_POST['cidade'];
 	$estado = $_POST['estado'];
-	$telefone = $_POST['telefone'];	
+	$telefone = $_POST['telefone'];
 	$cpf = $_POST['cpf'];
 	$email = $_POST['email'];
 	$senha = $_POST['senha'];
@@ -41,16 +41,16 @@ if(isset($_POST['subUsuario'])){
 </head>
 <body>
 
-	<script>		
+	<script>
 		function formatar(mascara, documento){
 			var i = documento.value.length;
 			var saida = mascara.substring(0,1);
 			var texto = mascara.substring(i)
-			
+
 			if (texto.substring(0,1) != saida){
 						documento.value += texto.substring(0,1);
 			}
-			
+
 		}
 	</script>
 
@@ -66,26 +66,26 @@ if(isset($_POST['subUsuario'])){
 		<div class="row">
 			<div class="small-12 medium-12 large-12 columns">
 				<label>Nome</label>
-				<input type="text" placeholder="" name="nome">
+				<input type="text" placeholder="Nome completo" name="nome" required>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="small-12 medium-12 large-12 columns">
 				<label>CPF</label>
-				<input type="text" placeholder="" name="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)">
+				<input type="text" placeholder="" name="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" required>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="small-12 medium-6 large-6 columns">
 				<label>Email</label>
-				<input type="email" placeholder="" name="email">
+				<input type="email" placeholder="email@exemplo.com" name="email" required>
 			</div>
 
 			<div class="small-12 medium-6 large-6 columns">
 				<label>Senha</label>
-				<input type="password" placeholder="" name="senha">
+				<input type="password" placeholder="" name="senha" required>
 			</div>
 		</div>
 
@@ -142,13 +142,13 @@ if(isset($_POST['subUsuario'])){
 		<div class="row">
 			<div class="small-12 medium-6 large-6 columns">
 				<label>Telefone</label>
-				<input type="tel" placeholder="" name="telefone">
+				<input type="tel" placeholder="(xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" name="telefone">
 			</div>
 
 		</div>
 
 		<div class="row">
-			<div class="small-12 columns">				
+			<div class="small-12 columns">
 				<input type="submit" name = "subUsuario" class="button primary" value="Enviar Dados">
 			</div>
 		</div>
