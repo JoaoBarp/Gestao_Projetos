@@ -20,7 +20,7 @@ if(isset($_POST['subAnimal'])){
 $sql = "insert into animais (idade, porte, descricao, nomeanimal, tipoanimal, nomeusuario, raca) values ($idade, '$porte', '$desc', '$nome', '$tipo', 'japa', '$raca');";
 
 $res = mysqli_query($link, $sql) or die(mysqli_error($link));
-
+header('location:cadastro-animais.php');
 // if(!mysqli_num_rows($res)) echo "Erro ao salvar Dados!";
 
 mysqli_close($link);
@@ -49,7 +49,7 @@ mysqli_close($link);
 		    <div class="row">
           <div class="small-12 medium-4 large-4 columns">
     		    <label>Nome do animal
-    		    <input type="text" name="nomeanimal">
+    		    <input placeholder="Digite apenas letras" required pattern="[a-z\s]+$" type="text" name="nomeanimal">
             </label>
           </div>
 		    	<fieldset class="small-12 medium-4 large-4 columns">
@@ -68,13 +68,16 @@ mysqli_close($link);
         <div class="row">
           <div class="small-12 medium-4 large-4 columns">
 		         <label>Tipo de animal<!--Buscar no banco-->
-		          <select name="tipoanimal">
+		          <select required name="tipoanimal">
                       <option value="">Selecione</option>
                       <?php
                     	  $sql = "SELECT id, nome FROM tipoAnimal order by nome;";
                           $res = mysqli_query($link, $sql);
-                          while ($resu = mysqli_fetch_assoc( $res ) )
+                          while ($resu = mysqli_fetch_assoc( $res ) ){
                               echo '<option value="'.$resu['id'].'">'.$resu['nome'].'</option>';
+                              //echo $resu;
+                          }
+
         	          ?>
 		          </select>
             </label>
@@ -87,7 +90,7 @@ mysqli_close($link);
 
           <div class="small-12 medium-4 large-4 columns">
 		    		<label>Idade:
-		   			 <input type="number" name="idadeanimal" min="0" max="200">
+		   			 <input required type="number" name="idadeanimal" min="0" max="200">
             </label>
 		    	</div>
         </div>
