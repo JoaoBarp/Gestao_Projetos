@@ -52,13 +52,17 @@ mysqli_close($link);
     		    <input type="text" name="nomeanimal">
             </label>
           </div>
-		    	<fieldset class="small-12 medium-8 large-8 columns">
+		    	<fieldset class="small-12 medium-4 large-4 columns">
               <legend>Escolha o porte/tamanho do animal</legend>
 				    <input type="radio" name="porte" value="pequeno" checked> <label for="pequeno">Pequeno</label>
 				    <input type="radio" name="porte" value="medio"> <label for="medio">Médio</label>
 				    <input type="radio" name="porte" value="grande"> <label for="grande">Grande</label>
           </fieldset>
-
+          <div class="small-12 medium-4 large-4 columns">
+            <label>Imagem do animal
+            <input type="file" name="foto">
+            </label>
+          </div>
         </div>
 
         <div class="row">
