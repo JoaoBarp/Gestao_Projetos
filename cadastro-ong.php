@@ -10,20 +10,16 @@ if(isset($_POST['subUsuario'])){
     $cep  = $_POST['cep'];
     $cidade  = $_POST['cidade'];
 	$estado = $_POST['estado'];
-	$telefone = $_POST['telefone'];	
-	$cpf = $_POST['cpf'];
+	$telefone = $_POST['telefone'];
+	$ong = $_POST['ong'];	
 	$email = $_POST['email'];
 	$senha = $_POST['senha'];
 
-	/*
+	
 	$sql = "insert into usuario (nome, rua, numero, complemento, bairro, cidade, estado, cep, telefone, ong, email, senha)
 		values ('$nome', '$endereco', $numero, '$complemento', '$bairro', '$cidade', '$estado', '$cep','$telefone', '$ong','$email','$senha');";
-	*/
-
-	// Colocar variavel cpf no campo certo
-	$sql = "insert into usuario (nome, rua, numero, complemento, bairro, cidade, estado, cep, telefone, email, senha)
-		values ('$nome', '$endereco', $numero, '$complemento', '$bairro', '$cidade', '$estado', '$cep','$telefone', '$email','$senha');";
-
+	
+	
 	$res = mysqli_query($link, $sql) or die(mysqli_error($link));
 
 	// if(!mysqli_num_rows($res)) echo "Erro ao salvar Dados!";
@@ -36,7 +32,7 @@ if(isset($_POST['subUsuario'])){
 <html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
-	<title>Cadastro de Usuário</title>
+	<title>Cadastro de ONG</title>
 	<link rel="stylesheet" href="css/foundation.css">
 </head>
 <body>
@@ -53,80 +49,82 @@ if(isset($_POST['subUsuario'])){
 			
 		}
 	</script>
+    
 
 	<div class="row">
 		<div class="small-12 columns small-centered">
-			<h1 style="color:#767676">Cadastro de Usuário</h1>
+			<h1 style="color:#767676">Cadastro de ONG</h1>
 		</div>
-	</div>
+	</div>  
 
 
-	<form action="cadastro-usuario.php" method="POST">
+	<form action="cadastro-ong.php" method="POST">                 
 
 		<div class="row">
 			<div class="small-12 medium-12 large-12 columns">
-				<label>Nome</label>
-				<input type="text" placeholder="" name="nome">
+                <label>Nome</label>
+                <input type="text" placeholder="" name="nome">                
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="small-12 medium-12 large-12 columns">
-				<label>CPF</label>
-				<input type="text" placeholder="" name="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)">
+                <label>CNPJ</label>
+				<input type="text" placeholder=":" name="cnpj" maxlength="18" OnKeyPress="formatar('##.###.###/####-##', this)">                
+			</div>
+		</div>
+
+        <div class="row">
+			<div class="small-12 medium-6 large-6 columns">
+                <label>Email</label>
+				<input type="email" placeholder="" name="email">                
+			</div>
+
+			<div class="small-12 medium-6 large-6 columns">
+                <label>Senha</label>
+				<input type="password" placeholder="" name="senha">                
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="small-12 medium-6 large-6 columns">
-				<label>Email</label>
-				<input type="email" placeholder="" name="email">
-			</div>
-
-			<div class="small-12 medium-6 large-6 columns">
-				<label>Senha</label>
-				<input type="password" placeholder="" name="senha">
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="small-12 medium-6 large-6 columns">
-				<label>Endereço</label>
-				<input type="text" placeholder="" name="endereco">
+                <label>Endereço</label>
+				<input type="text" placeholder="" name="endereco">                
 			</div>
 
 			<div class="small-12 medium-2 large-2 columns">
-				<label>Número</label>
+                <label>Número</label>
 				<input type="number" placeholder="" min="0" name="numero">
+                
 			</div>
 
 			<div class="small-12 medium-4 large-4 columns">
-				<label>Complemento</label>
+                <label>Complemento</label>
 				<input type="text" placeholder="" name="complemento">
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="small-12 medium-6 large-6 columns">
-				<label>Bairro</label>
+                <label>Bairro</label>
 				<input type="text" placeholder="" name="bairro">
 			</div>
 
 			<div class="small-12 medium-6 large-6 columns">
-				<label>CEP</label>
+                <label>CEP</label>
 				<input type="text" placeholder="" name="cep">
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="small-12 medium-6 large-6 columns">
-				<label>Cidade</label>
+                <label>Cidade</label>
 				<input type="text" placeholder="" name="cidade">
 			</div>
 
 			<div class="small-12 medium-6 large-6 columns">
-				<label>Estado</label>
-				<select name="estado" id="estado">
+                <label>Estado</label>
+				<select name="estado" id="estado">                    
 					<?php
 						$sql = "SELECT nome FROM estados order by nome;";
 							$res = mysqli_query($link, $sql);
@@ -141,19 +139,21 @@ if(isset($_POST['subUsuario'])){
 
 		<div class="row">
 			<div class="small-12 medium-6 large-6 columns">
-				<label>Telefone</label>
-				<input type="tel" placeholder="" name="telefone">
+                <label>Telefone</label>
+				<input type="tel" placeholder="Telefone" name="telefone">
 			</div>
 
-		</div>
+		</div>		
 
 		<div class="row">
-			<div class="small-12 columns">				
+			<div class="small-12 columns">
 				<input type="submit" name = "subUsuario" class="button primary" value="Enviar Dados">
 			</div>
-		</div>
+		</div>        
 
 	</form>
+
+    
 
 	<script src="js/vendor/jquery.js"></script>
 	<script src="js/vendor/foundation.js"></script>
