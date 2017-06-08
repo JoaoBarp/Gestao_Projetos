@@ -54,106 +54,111 @@ if(isset($_POST['subUsuario'])){
 		}
 	</script>
 
-	<div class="row">
-		<div class="small-12 columns small-centered">
-			<h1 style="color:#767676">Cadastro de Usuário</h1>
+	<div style="margin-top:1%" class="row small-12 medium-5 large-5 column">
+
+		<div class="row">
+			<div class="small-12 medium-12 large-12 columns small-centered text-center">
+				<h3 style="color:#767676">Cadastro de Usuário</h3>
+			</div>
 		</div>
+
+
+		<form style="margin-top:3%" action="cadastro-usuario.php" method="POST">
+
+			<div class="row">
+				<div class="small-12 medium-12 large-12 columns">
+					<label>Nome Completo</label>
+					<input type="text" placeholder="" name="nome" required>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="small-12 medium-6 large-6 columns">
+					<label>CPF</label>
+					<input type="text" placeholder="" name="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" required>
+				</div>
+
+				<div class="small-12 medium-6 large-6 columns">
+					<label>Telefone</label>
+					<input type="tel" placeholder="(xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" name="telefone">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="small-12 medium-6 large-6 columns">
+					<label>Email</label>
+					<input type="email" placeholder="" name="email" required>
+				</div>
+			
+				<div class="small-12 medium-6 large-6 columns">
+					<label>Senha</label>
+					<input type="password" placeholder="" name="senha" required>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="small-12 medium-12 large-9 columns">
+					<label>Endereço</label>
+					<input type="text" placeholder="" name="endereco">
+				</div>
+
+				<div class="small-3 medium-4 large-3 columns">
+					<label>Número</label>
+					<input type="number" placeholder="" min="0" name="numero" style="-moz-appearance:textfield;-webkit-appearance: none; margin: 0;">
+				</div>
+			</div>
+
+			<div class="row">	
+				<div class="small-12 medium-6 large-6 columns">
+					<label>Complemento</label>
+					<input type="text" placeholder="" name="complemento">
+				</div>		
+
+				<div class="small-9 medium-8 large-6 columns">
+					<label>Bairro</label>
+					<input type="text" placeholder="" name="bairro">
+				</div>
+				
+			</div>
+
+			<div class="row">				
+				<div class="small-12 medium-6 large-6 columns">
+					<label>Cidade</label>
+					<input type="text" placeholder="" name="cidade">
+				</div>
+
+				<div class="small-12 medium-6 large-6 columns">
+					<label>Estado</label>
+					<select name="estado" id="estado">
+						<?php
+							$sql = "SELECT nome FROM estados order by nome;";
+								$res = mysqli_query($link, $sql);
+								while ($resu = mysqli_fetch_assoc($res)){
+										echo '<option value="'.$resu['nome'].'">'.$resu['nome'].'</option>';
+
+								}
+						?>
+					</select>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="small-12 medium-6 large-6 columns">
+					<label>CEP</label>
+					<input type="text" placeholder="" name="cep">
+				</div>
+			</div>
+		
+
+			<div style="margin-top:2%" class="row">
+				<div class="small-12 columns">
+					<input type="submit" name = "subUsuario" class="button primary" value="Enviar">
+				</div>
+			</div>
+
+		</form>
+
 	</div>
-
-
-	<form action="cadastro-usuario.php" method="POST">
-
-		<div class="row">
-			<div class="small-12 medium-12 large-12 columns">
-				<label>Nome</label>
-				<input type="text" placeholder="Nome completo" name="nome" required>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="small-12 medium-12 large-12 columns">
-				<label>CPF</label>
-				<input type="text" placeholder="" name="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" required>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="small-12 medium-6 large-6 columns">
-				<label>Email</label>
-				<input type="email" placeholder="email@exemplo.com" name="email" required>
-			</div>
-
-			<div class="small-12 medium-6 large-6 columns">
-				<label>Senha</label>
-				<input type="password" placeholder="" name="senha" required>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="small-12 medium-6 large-6 columns">
-				<label>Endereço</label>
-				<input type="text" placeholder="" name="endereco">
-			</div>
-
-			<div class="small-12 medium-2 large-2 columns">
-				<label>Número</label>
-				<input type="number" placeholder="" min="0" name="numero">
-			</div>
-
-			<div class="small-12 medium-4 large-4 columns">
-				<label>Complemento</label>
-				<input type="text" placeholder="" name="complemento">
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="small-12 medium-6 large-6 columns">
-				<label>Bairro</label>
-				<input type="text" placeholder="" name="bairro">
-			</div>
-
-			<div class="small-12 medium-6 large-6 columns">
-				<label>CEP</label>
-				<input type="text" placeholder="" name="cep">
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="small-12 medium-6 large-6 columns">
-				<label>Cidade</label>
-				<input type="text" placeholder="" name="cidade">
-			</div>
-
-			<div class="small-12 medium-6 large-6 columns">
-				<label>Estado</label>
-				<select name="estado" id="estado">
-					<?php
-						$sql = "SELECT nome FROM estados order by nome;";
-							$res = mysqli_query($link, $sql);
-							while ($resu = mysqli_fetch_assoc($res)){
-									echo '<option value="'.$resu['nome'].'">'.$resu['nome'].'</option>';
-
-							}
-					 ?>
-				</select>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="small-12 medium-6 large-6 columns">
-				<label>Telefone</label>
-				<input type="tel" placeholder="(xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" name="telefone">
-			</div>
-
-		</div>
-
-		<div class="row">
-			<div class="small-12 columns">
-				<input type="submit" name = "subUsuario" class="button primary" value="Enviar Dados">
-			</div>
-		</div>
-
-	</form>
 
 	<script src="js/vendor/jquery.js"></script>
 	<script src="js/vendor/foundation.js"></script>
