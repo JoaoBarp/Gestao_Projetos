@@ -68,7 +68,7 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-12 large-12 columns">
 					<label>Nome Completo</label>
-					<input type="text" placeholder="" name="nome" required>
+					<input type="text" placeholder="Nome Completo" name="nome" required>
 				</div>
 			</div>
 
@@ -87,12 +87,12 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-6 large-6 columns">
 					<label>Email</label>
-					<input type="email" placeholder="" name="email" required>
+					<input type="email" placeholder="exemplo@email.com" name="email" required>
 				</div>
-			
+
 				<div class="small-12 medium-6 large-6 columns">
 					<label>Senha</label>
-					<input type="password" placeholder="" name="senha" required>
+					<input type="password" placeholder="Digite sua senha" name="senha" required>
 				</div>
 			</div>
 
@@ -108,20 +108,20 @@ if(isset($_POST['subUsuario'])){
 				</div>
 			</div>
 
-			<div class="row">	
+			<div class="row">
 				<div class="small-12 medium-6 large-6 columns">
 					<label>Complemento</label>
 					<input type="text" placeholder="" name="complemento">
-				</div>		
+				</div>
 
 				<div class="small-9 medium-8 large-6 columns">
 					<label>Bairro</label>
 					<input type="text" placeholder="" name="bairro">
 				</div>
-				
+
 			</div>
 
-			<div class="row">				
+			<div class="row">
 				<div class="small-12 medium-6 large-6 columns">
 					<label>Cidade</label>
 					<input type="text" placeholder="" name="cidade">
@@ -141,14 +141,14 @@ if(isset($_POST['subUsuario'])){
 					</select>
 				</div>
 			</div>
-				
+
 			<div class="row">
 				<div class="small-12 medium-6 large-6 columns">
 					<label>CEP</label>
-					<input type="text" placeholder="" name="cep">
+					<input type="text" placeholder="xxxxx-xxx" name="cep">
 				</div>
 			</div>
-		
+
 
 			<div style="margin-top:2%" class="row">
 				<div class="small-12 columns">
