@@ -62,88 +62,165 @@ if(isset($_POST['subUsuario'])){
 
 		<div class="row">
 			<div class="small-12 medium-12 large-12 columns">
-                <label>Nome</label>
-                <input type="text" placeholder="Nome da ONG" name="nome">
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="small-12 medium-12 large-12 columns">
-                <label>CNPJ</label>
-				<input type="text" placeholder=":" name="cnpj" maxlength="18" OnKeyPress="formatar('##.###.###/####-##', this)">
-			</div>
-		</div>
-
-        <div class="row">
-			<div class="small-12 medium-6 large-6 columns">
-                <label>Email</label>
-				<input type="email" placeholder="email@exemplo.com" name="email">
-			</div>
-
-			<div class="small-12 medium-6 large-6 columns">
-                <label>Senha</label>
-				<input type="password" placeholder="" name="senha">
+                <label for="nome">Nome
+                	<input type="text" name="nome">
+                </label>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="small-12 medium-6 large-6 columns">
-                <label>Endereço</label>
-				<input type="text" placeholder="" name="endereco">
+                <label for="cnpj">CNPJ
+					<input type="text" placeholder=":" name="cnpj" maxlength="18" OnKeyPress="formatar('##.###.###/####-##', this)">
+				</label>
+			</div>
+			<div class="small-12 medium-6 large-6 columns">
+				<label for="razaoSocial">Razão Social
+					<input type="text" name="razaoSocial">
+				</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="small-12 medium-6 large-6 columns">
+				<label for="fundacao">Fundação da ONG
+					<input type="date" name="fundacao">
+				</label>
+			</div>
+			<div class="small-12 medium-6 large-6 columns">
+				<label for="imagem">Imagem
+					<input type="file" name="imagem">
+				</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="small-12 columns">
+				<label for="link">Link externo da ONG
+					<input type="text" name="link">
+				</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="samll-12 columns">
+				<label for="descricao">Descrição da ONG
+					<textarea name="descricao" id="descricao" rows="10"></textarea>
+				</label>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="small-12 medium-6 large-6 columns">
+                <label for="rua">Endereço
+					<input type="text" name="rua">
+				</label>
 			</div>
 
 			<div class="small-12 medium-2 large-2 columns">
-                <label>Número</label>
-				<input type="number" placeholder="" min="0" name="numero">
-
+                <label for="numero">Número
+					<input type="number" min="0" name="numero">
+				</label>
 			</div>
 
 			<div class="small-12 medium-4 large-4 columns">
-                <label>Complemento</label>
-				<input type="text" placeholder="" name="complemento">
+                <label for="complemento">Complemento
+					<input type="text" name="complemento">
+				</label>
 			</div>
+		</div>        
+
+		<div class="row">		
+			<div class="small-12 medium-2 large-2 columns">
+                <label for="estado">Estado
+					<select name="estado">
+						<option value="AC">Acre</option>
+						<option value="AL">Alagoas</option>
+						<option value="AP">Amapá</option>
+						<option value="AM">Amazonas</option>
+						<option value="BA">Bahia</option>
+						<option value="CE">Ceará</option>
+						<option value="DF">Distrito Federal</option>
+						<option value="ES">Espírito Santo</option>
+						<option value="GO">Goiás</option>
+						<option value="MA">Maranhão</option>
+						<option value="MT">Mato Grosso</option>
+						<option value="MS">Mato Grosso do Sul</option>
+						<option value="MG">Minas Gerais</option>
+						<option value="PA">Pará</option>
+						<option value="PB">Paraíba</option>
+						<option value="PR">Paraná</option>
+						<option value="PE">Pernambuco</option>
+						<option value="PI">Piauí</option>
+						<option value="RJ">Rio de Janeiro</option>
+						<option value="RN">Rio Grande do Norte</option>
+						<option value="RS">Rio Grande do Sul</option>
+						<option value="RO">Rondônia</option>
+						<option value="RR">Roraima</option>
+						<option value="SC">Santa Catarina</option>
+						<option value="SP">São Paulo</option>
+						<option value="SE">Sergipe</option>
+						<option value="TO">Tocantins</option>
+					</select>
+				</label>
+			</div>
+
+			<div class="small-12 medium-5 large-5 columns">
+                <label for="bairro">Bairro
+					<input type="text"  name="bairro">
+				</label>
+			</div>
+
+			<div class="small-12 medium-5 large-5 columns">
+                <label for="cidade">Cidade
+					<input type="text"  name="cidade">
+				</label>
+			</div>
+			
+		</div>
+
+		<div class="row">
+			<div class="small-12 medium-4 large-4 columns">
+                <label for="cep">CEP
+					<input type="text" placeholder="" name="cep">
+				</label>
+			</div>
+
+			<div class="small-12 medium-4 large-4 columns">
+                <label for="telefone">Telefone
+					<input type="tel" placeholder="(xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" name="telefone">
+				</label>
+			</div>
+
+			<div class="small-12 medium-4 large-4 columns">
+                <label for="email">Email
+					<input type="email" placeholder="email@exemplo.com" name="email">
+				</label>
+			</div>
+		
 		</div>
 
 		<div class="row">
 			<div class="small-12 medium-6 large-6 columns">
-                <label>Bairro</label>
-				<input type="text" placeholder="" name="bairro">
+				<label for="nomeRepresentante">Nome do Representante
+					<input type="text" name="nomeRepresentante">
+				</label>
 			</div>
-
 			<div class="small-12 medium-6 large-6 columns">
-                <label>CEP</label>
-				<input type="text" placeholder="" name="cep">
+				<label for="cargo">Cargo
+					<input type="text" name="cargo">
+				</label>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="small-12 medium-6 large-6 columns">
-                <label>Cidade</label>
-				<input type="text" placeholder="" name="cidade">
-			</div>
-
-			<div class="small-12 medium-6 large-6 columns">
-                <label>Estado</label>
-				<select name="estado" id="estado">
-					<?php
-						$sql = "SELECT nome FROM estados order by nome;";
-							$res = mysqli_query($link, $sql);
-							while ($resu = mysqli_fetch_assoc($res)){
-									echo '<option value="'.$resu['nome'].'">'.$resu['nome'].'</option>';
-
-							}
-					 ?>
-				</select>
+			<div class="small-12 columns">				
+                <label for="senha">Senha
+					<input type="password" name="senha">
+				</label>
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="small-12 medium-6 large-6 columns">
-                <label>Telefone</label>
-				<input type="tel" placeholder="(xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" name="telefone">
-			</div>
-
-		</div>
 
 		<div class="row">
 			<div class="small-12 columns">
