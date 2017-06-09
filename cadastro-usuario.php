@@ -21,7 +21,7 @@ if(isset($_POST['subUsuario'])){
 
 	$sql = "insert into usuario (nome, nome_completo, rua, numero, complemento, bairro, cidade, estado, cep, telefone, email, data_nascimento, cpf, rg, senha)
 		values (\"$nomeUsuario\", \"$nomeCompleto\", \"$endereco\", \"$numero\", \"$complemento\", \"$bairro\", \"$cidade\", \"$estado\", \"$cep\",\"$telefone\", \"$email\", \"$data\", \"$cpf\", \"$rg\", \"$senha\");";
-		echo"hue ";
+
 	$res = mysqli_query($link, $sql) or die(mysqli_error($link));
 
 	
