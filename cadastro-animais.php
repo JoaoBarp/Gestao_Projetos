@@ -66,7 +66,7 @@ mysqli_close($link);
         </div>
 
         <div class="row">
-          <div class="small-12 medium-4 large-4 columns">
+          <div class="small-12 medium-3 large-3 columns">
 		         <label>Tipo de animal<!--Buscar no banco-->
 		          <select required name="tipoanimal">
                       <option value="">Selecione</option>
@@ -82,17 +82,25 @@ mysqli_close($link);
 		          </select>
             </label>
           </div>
-          <div class="small-12 medium-4 large-4 columns">
+          <div class="small-12 medium-3 large-3 columns">
             <label>Raça <!--Buscar no banco as raças de acordo com o tipo de animal-->
-            <select name="raca"></select>
+            <select required name="raca"></select>
             </label>
           </div>
 
-          <div class="small-12 medium-4 large-4 columns">
+          <div class="small-12 medium-3 large-3 columns">
 		    		<label>Idade:
 		   			 <input required type="number" name="idadeanimal" min="0" max="200">
             </label>
 		    	</div>
+
+                  <div class="small-12 medium-3 large-3 columns">
+                        <fieldset>
+                              <legend>Amigavel ?</legend>
+                              <input type="radio" name="amigavel" value="pequeno" checked> <label for="pequeno">Sim</label>
+                              <input type="radio" name="amigavel" value="medio"> <label for="medio">Não</label>
+                        </fieldset>
+                  </div>
         </div>
   		    <!--No momento de inserir no banco, o campo "usuario" deve ser pego da sessão-->
         <div class="row">
@@ -104,11 +112,27 @@ mysqli_close($link);
       </div>
 
       <div class="row">
+      <div class="small-12 medium-12 large-12 columns">
+            <input id="Vraiva" type="checkbox"><label for="checkbox2">Tem vacina para raiva ?</label>
+      </div>
+      </div>
+      <div class="row">
+      <div class="small-12 medium-12 large-12 columns">
+            <input id="v8v10" type="checkbox"><label for="checkbox2">Tem vacina v8v10 ?</label>
+      </div>
+      </div>
+      <div class="row">
+      <div class="small-12 medium-12 large-12 columns">
+      <input id="castrado" type="checkbox"><label for="checkbox2">Castrado ?</label>
+      </div>
+      </div>
+
+
+      <div class="row">
         <div class="small-12 medium-3 large-3 large-centered text-center column">
           <input type="submit" name="subAnimal" class="expanded button primary" value="Enviar">
         </div>
       </div>
-
 		 </form>
   	</div>
   </div>
