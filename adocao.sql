@@ -86,6 +86,6 @@ create table animais(
 
 --insert into estados (nome) values ('SC'), ('SP'), ('BA'), ('RS'), ('PR');
 --insert into usuario values ('japa', 'blablbala', 3, 'apto 12', 'centro', 'Chapecó', 'SC', '5522456', '(49)555555', FALSE, 'balbalaba@haushyausha', 'oi123');
---insert into tipoAnimal (nome) values ('gato'), ('cachorro'), ('tartaruga');
---insert into racas (nome, tipoanimal) values ('pit bull', 2), ('siames', 1);
+--insert into tipoAnimal (nome) values ('Gato'), ('Cachorro'), ('Tartaruga');
+--insert into racas (nome, tipoanimal) values ('Pit bull', 2), ('Siames', 1);
 --insert into animais (idade, porte, descricao, nomeanimal, tipoanimal, nomeusuario, raca) values (5, 'pequeno', 'ooooo', 'Murphy', 1, 'japa', 2);
