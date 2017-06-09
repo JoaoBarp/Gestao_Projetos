@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `ong` (
 
 create table usuario(
 	nome varchar(30) not null,
+	nome_completo varchar (50) not null,
 	rua varchar(25) not null,
 	numero varchar(15) not null,
 	complemento varchar(15) null,
