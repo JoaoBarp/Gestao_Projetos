@@ -1,6 +1,7 @@
 <?php
 
 $link = mysqli_connect("localhost", "root", "", "adocao");
+$flagres = 2; ///flag que determina qual mensagem aparece após o submit
 
 if(isset($_POST['subUsuario'])){
 	$nomeCompleto = $_POST['nomeCompleto'];
@@ -22,9 +23,15 @@ if(isset($_POST['subUsuario'])){
 	$sql = "insert into usuario (nome, nome_completo, rua, numero, complemento, bairro, cidade, estado, cep, telefone, email, data_nascimento, cpf, rg, senha)
 		values (\"$nomeUsuario\", \"$nomeCompleto\", \"$endereco\", \"$numero\", \"$complemento\", \"$bairro\", \"$cidade\", \"$estado\", \"$cep\",\"$telefone\", \"$email\", \"$data\", \"$cpf\", \"$rg\", \"$senha\");";
 
-	$res = mysqli_query($link, $sql) or die(mysqli_error($link));
+	$res = mysqli_query($link, $sql);
 
 	
+	if($res == false){
+		$flagres = 0;  //flag que determina qual mensagem aparece após o submit
+	}
+	else{
+		$flagres = 1;
+	}
 
 	mysqli_close($link);
 }
@@ -60,6 +67,30 @@ if(isset($_POST['subUsuario'])){
 			</div>
 		</div>
 
+		<div class="row">
+			<div class="small-12 columns">
+				<?php 
+					switch($flagres):
+						case 1:
+				?>
+							<div data-alert class="label success radius">
+							  Os dados foram inseridos com sucesso (=							 
+							</div>
+				<?php
+							break;
+						case 0:
+				?>
+							<div data-alert class="label alert radius">
+							  Ocorreu um erro com a inserção dos dados. Tente novamente =(							  
+							</div>
+				<?php
+							break;
+						default:    
+							$flagres = 0;  
+					endswitch;
+				?>
+			</div>
+		</div>	
 
 		<form style="margin-top:3%" action="cadastro-usuario.php" method="POST">
 
