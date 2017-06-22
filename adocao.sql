@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `ong` (
   `link` varchar(40) NULL,
   `rua` varchar(30) NOT NULL,
   `numero` varchar(15) NOT NULL,
-  `complemento` varchar(15) NOT NULL,
+  `complemento` varchar(15) NULL,
   `bairro` varchar(20) NOT NULL,
   `cidade` varchar(25) NOT NULL,
   `estado` varchar(2)  NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `ong` (
   `nome_representante` varchar(40) NOT NULL,
   `cargo` varchar(30) NOT NULL,
   `descricao` text NOT NULL,
-  `imagem` varchar(50) NOT NULL,
+  `imagem` varchar(50) NULL,
   `fundacao` varchar(10) NOT NULL,
   `senha` varchar(40)  NOT NULL,
   PRIMARY KEY (`id`)

@@ -69,7 +69,7 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-12 large-12 columns">
 					<label for="nome">Nome
-						<input type="text" name="nome" placeholder="Insira o nome da ONG que você representa">
+						<input required type="text" name="nome" placeholder="Insira o nome da ONG que você representa">
 					</label>
 				</div>
 			</div>
@@ -77,13 +77,13 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-12 large-6 columns">
 					<label for="email">Email
-						<input type="email" placeholder="email@exemplo.com" name="email">
+						<input type="email" placeholder="email@exemplo.com" name="email" required>
 					</label>
 				</div>
 
 				<div class="small-12 medium-12 large-6 columns">
 					<label for="senha">Senha
-						<input type="password" name="senha">
+						<input type="password" name="senha" required>
 					</label>
 				</div>
 			</div>
@@ -91,12 +91,12 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-12 large-6 columns">
 					<label for="cnpj">CNPJ
-						<input type="text" placeholder="00.000.000/0000-00" name="cnpj" maxlength="18" OnKeyPress="formatar('##.###.###/####-##', this)">
+						<input type="text" required placeholder="00.000.000/0000-00" name="cnpj" maxlength="18" OnKeyPress="formatar('##.###.###/####-##', this)">
 					</label>
 				</div>
 				<div class="small-12 medium-12 large-6 columns">
 					<label for="razaoSocial">Razão Social
-						<input type="text" name="razaoSocial">
+						<input required type="text" name="razaoSocial">
 					</label>
 				</div>
 			</div>
@@ -104,7 +104,7 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-12 large-12 columns">
 					<label for="fundacao">Fundação da ONG
-						<input type="date" name="fundacao" placeholder="A que fundação a ONG pertence?">
+						<input required type="date" name="fundacao" placeholder="A que fundação a ONG pertence?">
 					</label>
 				</div>
 			</div>
@@ -119,7 +119,7 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="samll-12 columns">
 					<label for="descricao">Descrição da ONG
-						<textarea name="descricao" id="descricao" placeholder="Informações adicionais" rows="10"></textarea>
+						<textarea required name="descricao" id="descricao" placeholder="Informações adicionais" rows="10"></textarea>
 					</label>
 				</div>
 			</div>
@@ -135,13 +135,13 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-12 large-6 columns">
 					<label for="cep">CEP
-						<input type="text" placeholder="" name="cep">
+						<input required type="text" placeholder="" name="cep">
 					</label>
 				</div>
 
 				<div class="small-12 medium-12 large-6 columns">
 					<label for="telefone">Telefone
-						<input type="tel" placeholder="(xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" name="telefone">
+						<input required type="tel" placeholder="(xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" name="telefone">
 					</label>
 				</div>
 
@@ -150,13 +150,13 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-8 large-9 columns">
 					<label for="rua">Endereço
-						<input type="text" name="rua">
+						<input required type="text" name="rua">
 					</label>
 				</div>
 
 				<div class="small-12 medium-4 large-3 columns">
 					<label for="numero">Número
-						<input type="number" min="0" name="numero" style="-moz-appearance:textfield;-webkit-appearance: none; margin: 0;">
+						<input required type="number" min="0" name="numero" style="-moz-appearance:textfield;-webkit-appearance: none; margin: 0;">
 					</label>
 				</div>
 			</div>
@@ -171,7 +171,7 @@ if(isset($_POST['subUsuario'])){
 
 				<div class="small-12 medium-12 large-7 columns">
 					<label for="bairro">Bairro
-						<input type="text"  name="bairro">
+						<input required type="text"  name="bairro">
 					</label>
 				</div>
 
@@ -214,7 +214,7 @@ if(isset($_POST['subUsuario'])){
 
 				<div class="small-12 medium-12 large-7 columns">
 					<label for="cidade">Cidade
-						<input type="text"  name="cidade">
+						<input required type="text"  name="cidade">
 					</label>
 				</div>
 
@@ -224,7 +224,7 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-12 large-12 columns">
 					<label for="nomeRepresentante">Nome do Representante
-						<input type="text" name="nomeRepresentante">
+						<input required type="text" name="nomeRepresentante">
 					</label>
 				</div>
 			</div>
@@ -232,7 +232,7 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-12 large-12 columns">
 					<label for="cargo">Cargo
-						<input type="text" placeholder="Cargo do representante" name="cargo">
+						<input required type="text" placeholder="Cargo do representante" name="cargo">
 					</label>
 				</div>
 			</div>
