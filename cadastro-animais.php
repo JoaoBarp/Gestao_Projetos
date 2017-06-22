@@ -13,6 +13,14 @@ if(isset($_POST['subAnimal'])){
     $castrado = $_POST['castrado'];
     $amigavel  = $_POST['amigavel'];
 
+    $imagem = $_FILES["imagem"];
+    if($imagem != NULL) {
+          $tamanhoImg = filesize($nomeFinal);
+          $mysqlImg = addslashes(fread(fopen($nomeFinal, "r"), $tamanhoImg));
+
+   }
+
+
 // echo $idade . "<br>";
 // echo $porte . "<br>";
 // echo $tipo . "<br>";
@@ -21,7 +29,7 @@ if(isset($_POST['subAnimal'])){
 // echo $desc . "<br>";
 
 // $sql = "insert into animais (idade, porte, descricao, nomeanimal, tipoanimal, nomeusuario, raca) values (1, 'medio', 'ooddddooo', 'Murphy', 'cachorro', 'japa', 'Pit bull');";
-$sql = "insert into animais (idade, porte, descricao, nomeanimal, tipoanimal, nomeusuario, raca) values ($idade, '$porte', '$desc', '$nome', '$tipo', 'japa', '$raca');";
+$sql = "insert into animais (imagem,raiva, castrado, amigavel,v8v10,idade, porte, descricao, nomeanimal, tipoanimal, nomeusuario, raca) values ('$mysqlImg','$raiva','$castrado','$amigavel','$v8v10',$idade, '$porte', '$desc', '$nome', '$tipo', 'japa', '$raca');";
 
 $res = mysqli_query($link, $sql) or die(mysqli_error($link));
 header('location:cadastro-animais.php');
