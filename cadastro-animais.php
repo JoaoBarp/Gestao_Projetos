@@ -110,7 +110,7 @@ mysqli_close($link);
         <div class="row">
         <div class="small-12 medium-12 large-12 columns">
   		    <label>Descrição
-  		    <textarea name="descricao" placeholder="descricao"></textarea>
+  		    <textarea name="descricao" placeholder="Informe mais detalhes sobre o animal (idade, histórico de saúde, preferência de que tipo de lar, etc...)"></textarea>
           </label>
         </div>
       </div>
