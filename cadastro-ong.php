@@ -13,7 +13,7 @@ if(isset($_POST['subUsuario'])){
 	$descricao = $_POST['descricao'];
 	$cep  = $_POST['cep'];
 	$telefone = $_POST['telefone'];
-    $endereco = $_POST['rua'];	
+    $endereco = $_POST['rua'];
     $numero  = $_POST['numero'];
     $complemento  = $_POST['complemento'];
     $bairro  = $_POST['bairro'];
@@ -69,7 +69,7 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-12 large-12 columns">
 					<label for="nome">Nome
-						<input type="text" name="nome">
+						<input type="text" name="nome" placeholder="Insira o nome da ONG que você representa">
 					</label>
 				</div>
 			</div>
@@ -77,7 +77,7 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-12 large-6 columns">
 					<label for="email">Email
-						<input type="email" placeholder="" name="email">
+						<input type="email" placeholder="email@exemplo.com" name="email">
 					</label>
 				</div>
 
@@ -91,7 +91,7 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-12 large-6 columns">
 					<label for="cnpj">CNPJ
-						<input type="text" placeholder=":" name="cnpj" maxlength="18" OnKeyPress="formatar('##.###.###/####-##', this)">
+						<input type="text" placeholder="00.000.000/0000-00" name="cnpj" maxlength="18" OnKeyPress="formatar('##.###.###/####-##', this)">
 					</label>
 				</div>
 				<div class="small-12 medium-12 large-6 columns">
@@ -104,22 +104,22 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-12 large-12 columns">
 					<label for="fundacao">Fundação da ONG
-						<input type="date" name="fundacao">
+						<input type="date" name="fundacao" placeholder="A que fundação a ONG pertence?">
 					</label>
-				</div>				
+				</div>
 			</div>
 
 			<div class="row">
 				<div class="small-12 medium-12 large-6 columns">
 					<label for="imagem">Logo da ONG</label>
-					<input type="file" name="imagem">					
+					<input type="file" name="imagem">
 				</div>
-			</div>			
+			</div>
 
 			<div class="row">
 				<div class="samll-12 columns">
 					<label for="descricao">Descrição da ONG
-						<textarea name="descricao" id="descricao" rows="10"></textarea>
+						<textarea name="descricao" id="descricao" placeholder="Informações adicionais" rows="10"></textarea>
 					</label>
 				</div>
 			</div>
@@ -127,11 +127,11 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 columns">
 					<label for="link">Link externo da ONG
-						<input type="text" name="link">
+						<input type="url" name="link">
 					</label>
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="small-12 medium-12 large-6 columns">
 					<label for="cep">CEP
@@ -143,8 +143,8 @@ if(isset($_POST['subUsuario'])){
 					<label for="telefone">Telefone
 						<input type="tel" placeholder="(xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" name="telefone">
 					</label>
-				</div>		
-			
+				</div>
+
 			</div>
 
 			<div class="row">
@@ -158,10 +158,10 @@ if(isset($_POST['subUsuario'])){
 					<label for="numero">Número
 						<input type="number" min="0" name="numero" style="-moz-appearance:textfield;-webkit-appearance: none; margin: 0;">
 					</label>
-				</div>				
-			</div>        
+				</div>
+			</div>
 
-			<div class="row">						
+			<div class="row">
 
 				<div class="small-12 medium-12 large-5 columns">
 					<label for="complemento">Complemento
@@ -217,7 +217,7 @@ if(isset($_POST['subUsuario'])){
 						<input type="text"  name="cidade">
 					</label>
 				</div>
-				
+
 			</div>
 
 
@@ -226,13 +226,13 @@ if(isset($_POST['subUsuario'])){
 					<label for="nomeRepresentante">Nome do Representante
 						<input type="text" name="nomeRepresentante">
 					</label>
-				</div>				
+				</div>
 			</div>
 
 			<div class="row">
 				<div class="small-12 medium-12 large-12 columns">
 					<label for="cargo">Cargo
-						<input type="text" name="cargo">
+						<input type="text" placeholder="Cargo do representante" name="cargo">
 					</label>
 				</div>
 			</div>
