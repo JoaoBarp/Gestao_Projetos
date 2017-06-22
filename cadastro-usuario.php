@@ -1,32 +1,30 @@
 <?php
-$link = mysqli_connect('localhost', 'root', '', 'adocao') or die('Não foi possível conectar');
+
+$link = mysqli_connect("localhost", "root", "", "adocao");
 
 if(isset($_POST['subUsuario'])){
-    $nome = $_POST['nome'];
+	$nomeCompleto = $_POST['nomeCompleto'];
+    $nomeUsuario = $_POST['nome'];
+    $cpf = $_POST['cpf'];
+    $rg = $_POST['rg'];
+    $data = $_POST['data'];
+    $telefone = $_POST['telefone'];
+    $email = $_POST['email'];
+	$senha = $_POST['senha'];
     $endereco = $_POST['endereco'];
     $numero  = $_POST['numero'];
     $complemento  = $_POST['complemento'];
-    $bairro  = $_POST['bairro'];
-    $cep  = $_POST['cep'];
+    $bairro  = $_POST['bairro'];    
     $cidade  = $_POST['cidade'];
 	$estado = $_POST['estado'];
-	$telefone = $_POST['telefone'];
-	$cpf = $_POST['cpf'];
-	$email = $_POST['email'];
-	$senha = $_POST['senha'];
+	$cep  = $_POST['cep'];
 
-	/*
-	$sql = "insert into usuario (nome, rua, numero, complemento, bairro, cidade, estado, cep, telefone, ong, email, senha)
-		values ('$nome', '$endereco', $numero, '$complemento', '$bairro', '$cidade', '$estado', '$cep','$telefone', '$ong','$email','$senha');";
-	*/
-
-	// Colocar variavel cpf no campo certo
-	$sql = "insert into usuario (nome, rua, numero, complemento, bairro, cidade, estado, cep, telefone, email, senha)
-		values ('$nome', '$endereco', $numero, '$complemento', '$bairro', '$cidade', '$estado', '$cep','$telefone', '$email','$senha');";
+	$sql = "insert into usuario (nome, nome_completo, rua, numero, complemento, bairro, cidade, estado, cep, telefone, email, data_nascimento, cpf, rg, senha)
+		values (\"$nomeUsuario\", \"$nomeCompleto\", \"$endereco\", \"$numero\", \"$complemento\", \"$bairro\", \"$cidade\", \"$estado\", \"$cep\",\"$telefone\", \"$email\", \"$data\", \"$cpf\", \"$rg\", \"$senha\");";
 
 	$res = mysqli_query($link, $sql) or die(mysqli_error($link));
 
-	// if(!mysqli_num_rows($res)) echo "Erro ao salvar Dados!";
+	
 
 	mysqli_close($link);
 }
@@ -66,9 +64,14 @@ if(isset($_POST['subUsuario'])){
 		<form style="margin-top:3%" action="cadastro-usuario.php" method="POST">
 
 			<div class="row">
-				<div class="small-12 medium-12 large-12 columns">
+				<div class="small-12 medium-6 large-6 columns">
 					<label>Nome Completo</label>
-					<input type="text" placeholder="Nome Completo" name="nome" required>
+					<input type="text" placeholder="Nome Completo" name="nomeCompleto" required>
+				</div>
+				<div class="small-12 medium-6 large-6 columns">
+					<label for="nome">Nome de usuário
+						<input type="text" name="nome" required>
+					</label>
 				</div>
 			</div>
 
@@ -79,8 +82,21 @@ if(isset($_POST['subUsuario'])){
 				</div>
 
 				<div class="small-12 medium-6 large-6 columns">
+					<label for="rg">RG
+						<input type="text" name="rg" required>
+					</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="small-12 medium-6 large-6 columns">
+					<label for="data">Data de nascimento
+						<input type="date" name="data" required>
+					</label>
+				</div>
+				<div class="small-12 medium-6 large-6 columns">
 					<label>Telefone</label>
-					<input type="tel" placeholder="(xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" name="telefone">
+					<input type="tel" placeholder="xx-xxxxx-xxxx" OnKeyPress="formatar('##-#####-####', this)" name="telefone" required>
 				</div>
 			</div>
 
@@ -97,14 +113,14 @@ if(isset($_POST['subUsuario'])){
 			</div>
 
 			<div class="row">
-				<div class="small-12 medium-12 large-9 columns">
+				<div class="small-12 medium-8 large-9 columns">
 					<label>Endereço</label>
-					<input type="text" placeholder="" name="endereco">
+					<input type="text" placeholder="" name="endereco" required>
 				</div>
 
-				<div class="small-3 medium-4 large-3 columns">
+				<div class="small-12 medium-4 large-3 columns">
 					<label>Número</label>
-					<input type="number" placeholder="" min="0" name="numero" style="-moz-appearance:textfield;-webkit-appearance: none; margin: 0;">
+					<input type="number" placeholder="" min="0" name="numero" required style="-moz-appearance:textfield;-webkit-appearance: none; margin: 0;">
 				</div>
 			</div>
 
@@ -114,9 +130,9 @@ if(isset($_POST['subUsuario'])){
 					<input type="text" placeholder="" name="complemento">
 				</div>
 
-				<div class="small-9 medium-8 large-6 columns">
+				<div class="small-12 medium-6 large-6 columns">
 					<label>Bairro</label>
-					<input type="text" placeholder="" name="bairro">
+					<input type="text" placeholder="" name="bairro" required>
 				</div>
 
 			</div>
@@ -124,28 +140,48 @@ if(isset($_POST['subUsuario'])){
 			<div class="row">
 				<div class="small-12 medium-6 large-6 columns">
 					<label>Cidade</label>
-					<input type="text" placeholder="" name="cidade">
+					<input type="text" placeholder="" name="cidade" required>
 				</div>
 
 				<div class="small-12 medium-6 large-6 columns">
-					<label>Estado</label>
-					<select name="estado" id="estado">
-						<?php
-							$sql = "SELECT nome FROM estados order by nome;";
-								$res = mysqli_query($link, $sql);
-								while ($resu = mysqli_fetch_assoc($res)){
-										echo '<option value="'.$resu['nome'].'">'.$resu['nome'].'</option>';
-
-								}
-						?>
-					</select>
+					<label for="estado">Estado
+						<select name="estado" required>
+							<option value="AC">Acre</option>
+							<option value="AL">Alagoas</option>
+							<option value="AP">Amapá</option>
+							<option value="AM">Amazonas</option>
+							<option value="BA">Bahia</option>
+							<option value="CE">Ceará</option>
+							<option value="DF">Distrito Federal</option>
+							<option value="ES">Espírito Santo</option>
+							<option value="GO">Goiás</option>
+							<option value="MA">Maranhão</option>
+							<option value="MT">Mato Grosso</option>
+							<option value="MS">Mato Grosso do Sul</option>
+							<option value="MG">Minas Gerais</option>
+							<option value="PA">Pará</option>
+							<option value="PB">Paraíba</option>
+							<option value="PR">Paraná</option>
+							<option value="PE">Pernambuco</option>
+							<option value="PI">Piauí</option>
+							<option value="RJ">Rio de Janeiro</option>
+							<option value="RN">Rio Grande do Norte</option>
+							<option value="RS">Rio Grande do Sul</option>
+							<option value="RO">Rondônia</option>
+							<option value="RR">Roraima</option>
+							<option value="SC">Santa Catarina</option>
+							<option value="SP">São Paulo</option>
+							<option value="SE">Sergipe</option>
+							<option value="TO">Tocantins</option>
+						</select>
+					</label>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="small-12 medium-6 large-6 columns">
 					<label>CEP</label>
-					<input type="text" placeholder="xxxxx-xxx" name="cep">
+					<input type="text" placeholder="xxxxx-xxx" name="cep" required>
 				</div>
 			</div>
 
