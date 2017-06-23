@@ -78,7 +78,7 @@ mysqli_close($link);
           </fieldset>
           <div class="small-12 medium-4 large-4 columns">
                 <fieldset>
-                      <legend>Amigavel ?</legend>
+                      <legend>O animal é amigavel?</legend>
                       <input type="radio" name="amigavel" value="pequeno" checked> <label for="TRUE">Sim</label>
                       <input type="radio" name="amigavel" value="medio"> <label for="NULL">Não</label>
                 </fieldset>

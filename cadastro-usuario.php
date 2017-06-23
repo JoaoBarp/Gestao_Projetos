@@ -15,7 +15,7 @@ if(isset($_POST['subUsuario'])){
     $endereco = $_POST['endereco'];
     $numero  = $_POST['numero'];
     $complemento  = $_POST['complemento'];
-    $bairro  = $_POST['bairro'];    
+    $bairro  = $_POST['bairro'];
     $cidade  = $_POST['cidade'];
 	$estado = $_POST['estado'];
 	$cep  = $_POST['cep'];
@@ -25,7 +25,7 @@ if(isset($_POST['subUsuario'])){
 
 	$res = mysqli_query($link, $sql);
 
-	
+
 	if($res == false){
 		$flagres = 0;  //flag que determina qual mensagem aparece após o submit
 	}
@@ -69,28 +69,28 @@ if(isset($_POST['subUsuario'])){
 
 		<div class="row">
 			<div class="small-12 columns">
-				<?php 
+				<?php
 					switch($flagres):
 						case 1:
 				?>
 							<div data-alert class="label success radius">
-							  Os dados foram inseridos com sucesso (=							 
+							  Os dados foram inseridos com sucesso (=
 							</div>
 				<?php
 							break;
 						case 0:
 				?>
 							<div data-alert class="label alert radius">
-							  Ocorreu um erro com a inserção dos dados. Tente novamente =(							  
+							  Ocorreu um erro com a inserção dos dados. Tente novamente =(
 							</div>
 				<?php
 							break;
-						default:    
-							$flagres = 0;  
+						default:
+							$flagres = 0;
 					endswitch;
 				?>
 			</div>
-		</div>	
+		</div>
 
 		<form style="margin-top:3%" action="cadastro-usuario.php" method="POST">
 
