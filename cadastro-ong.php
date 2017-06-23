@@ -1,5 +1,7 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'adocao') or die('Não foi possível conectar');
+	$con = mysqli_connect('localhost', 'root', '', 'adocao');
+	
+	$flagres = 2; //flag que determina qual mensagem aparece após o submit
 
 if(isset($_POST['subUsuario'])){
     $nome = $_POST['nome'];
@@ -8,9 +10,8 @@ if(isset($_POST['subUsuario'])){
 	$cnpj = $_POST['cnpj'];
 	$razaoSocial = $_POST['razaoSocial'];
 	$fundacao = $_POST['fundacao'];
-	$imagem = $_POST['imagem'];
-	$link = $_POST['link'];
 	$descricao = $_POST['descricao'];
+	$link = $_POST['link'];	
 	$cep  = $_POST['cep'];
 	$telefone = $_POST['telefone'];
     $endereco = $_POST['rua'];
@@ -22,15 +23,21 @@ if(isset($_POST['subUsuario'])){
 	$nomeRepresentante = $_POST['nomeRepresentante'];
 	$cargo = $_POST['cargo'];
 
-	$sql = "insert into ong(id, nome, razao_social, cnpj, link, rua, numero, complemento, bairro, cidade, estado, cep, telefone, email, nome_representante, cargo, descricao, imagem, fundacao, senha)
-		values (NULL, '$nome', '$razaoSocial', '$cnpj', '$link', '$endereco', '$numero', '$complemento', '$bairro','$cidade', '$estado','$cep','$telefone','$email','$nomeRepresentante','$cargo','$descricao','$imagem', '$fundacao','$senha');";
+
+	$sql = "INSERT INTO ong (nome, razao_social, cnpj, link, rua, numero, complemento, bairro, cidade, estado, cep, telefone, email, nome_representante, cargo, descricao, fundacao, senha) values (\"$nome\", \"$razaoSocial\", \"$cnpj\", \"$link\", \"$endereco\", \"$numero\", \"$complemento\", \"$bairro\",\"$cidade\", \"$estado\",\"$cep\",\"$telefone\",\"$email\",\"$nomeRepresentante\",\"$cargo\",\"$descricao\", \"$fundacao\",\"$senha\");";
 
 
-	$res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+	$res = mysqli_query($con, $sql) or die(mysqli_error($con)." Q=".$sql);
 
-	// if(!mysqli_num_rows($res)) echo "Erro ao salvar Dados!";
+	
+	if($res == false){
+		$flagres = 0;  //flag que determina qual mensagem aparece após o submit
+	}
+	else{
+		$flagres = 1;
+	}
 
-	mysqli_close($conn);
+	mysqli_close($con);
 }
 
 ?>
@@ -63,6 +70,31 @@ if(isset($_POST['subUsuario'])){
 				<h3 style="color:#767676">Cadastro de ONG</h3>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="small-12 columns">
+				<?php 
+					switch($flagres):
+						case 1:
+				?>
+							<div data-alert class="label success radius">
+							  Os dados foram inseridos com sucesso (=							 
+							</div>
+				<?php
+							break;
+						case 0:
+				?>
+							<div data-alert class="label alert radius">
+							  Ocorreu um erro com a inserção dos dados. Tente novamente =(							  
+							</div>
+				<?php
+							break;
+						default:    
+							$flagres = 0;  
+					endswitch;
+				?>
+			</div>
+		</div>	
 
 		<form style="margin-top:3%" action="cadastro-ong.php" method="POST">
 
@@ -110,13 +142,6 @@ if(isset($_POST['subUsuario'])){
 			</div>
 
 			<div class="row">
-				<div class="small-12 medium-12 large-6 columns">
-					<label for="imagem">Logo da ONG</label>
-					<input type="file" name="imagem">
-				</div>
-			</div>
-
-			<div class="row">
 				<div class="samll-12 columns">
 					<label for="descricao">Descrição da ONG
 						<textarea required name="descricao" id="descricao" placeholder="Informações adicionais" rows="10"></textarea>
@@ -141,7 +166,7 @@ if(isset($_POST['subUsuario'])){
 
 				<div class="small-12 medium-12 large-6 columns">
 					<label for="telefone">Telefone
-						<input required type="tel" placeholder="(xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" name="telefone">
+						<input required type="tel" placeholder="xx-xxxxx-xxxx" OnKeyPress="formatar('##-#####-####', this)" name="telefone">
 					</label>
 				</div>
 
