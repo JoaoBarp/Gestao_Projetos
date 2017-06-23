@@ -27,7 +27,7 @@ if(isset($_POST['subUsuario'])){
 	$sql = "INSERT INTO ong (nome, razao_social, cnpj, link, rua, numero, complemento, bairro, cidade, estado, cep, telefone, email, nome_representante, cargo, descricao, fundacao, senha) values (\"$nome\", \"$razaoSocial\", \"$cnpj\", \"$link\", \"$endereco\", \"$numero\", \"$complemento\", \"$bairro\",\"$cidade\", \"$estado\",\"$cep\",\"$telefone\",\"$email\",\"$nomeRepresentante\",\"$cargo\",\"$descricao\", \"$fundacao\",\"$senha\");";
 
 
-	$res = mysqli_query($con, $sql) or die(mysqli_error($con)." Q=".$sql);
+	$res = mysqli_query($con, $sql);
 
 	
 	if($res == false){
